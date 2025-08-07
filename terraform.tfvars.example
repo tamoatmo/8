@@ -1,0 +1,42 @@
+# 示例变量配置文件
+# 复制此文件为 terraform.tfvars 并根据需要修改配置
+
+# AWS 配置
+aws_region = "us-west-2"
+
+# EKS 集群配置
+cluster_name        = "my-eks-cluster"
+kubernetes_version  = "1.28"
+
+# 网络配置
+vpc_cidr               = "10.0.0.0/16"
+public_subnet_cidrs    = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnet_cidrs   = ["10.0.10.0/24", "10.0.20.0/24"]
+
+# 节点组配置
+node_instance_types = ["t3.medium"]
+ami_type           = "AL2_x86_64"
+capacity_type      = "ON_DEMAND"
+disk_size          = 20
+
+# 扩展配置
+desired_capacity   = 2
+min_capacity      = 1
+max_capacity      = 5
+max_unavailable   = 1
+
+# 访问配置
+endpoint_private_access = true
+endpoint_public_access  = true
+public_access_cidrs    = ["0.0.0.0/0"]  # 建议限制为您的 IP 范围
+
+# 日志配置
+cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+
+# 标签配置
+tags = {
+  Environment = "development"
+  Project     = "my-eks-project"
+  ManagedBy   = "terraform"
+  Owner       = "your-name"
+}
